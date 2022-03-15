@@ -7,7 +7,7 @@ dotenv.config();
 console.log(process.env.MONGO_URL);
 const app = express();
 
-const PORT = 4000;
+// const PORT = 4000;
 
 const movies = [
 {"id":"100",
@@ -56,9 +56,11 @@ const movies = [
 // middle ware -> Intercept -> converting body to json
 app.use(express.json());
 
+
 // const MONGO_URL = "mongodb://localhost"; 
 // const MONGO_URL = "mongodb+srv://moviesdatabase:welcome123@cluster0.aiiaa.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
  // mongodb+srv://moviesdatabase:<password>@cluster0.aiiaa.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+ const PORT = process.env.PORT;
  const MONGO_URL = process.env.MONGO_URL;
 
  async function createConnection() {
