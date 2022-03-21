@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import express from "express";  // "type": "module",
 import { MongoClient } from "mongodb";
 import { moviesRouter } from "./routes/movies.js";
+import bcrypt from "bcrypt";
 dotenv.config();
 
 console.log(process.env.MONGO_URL);
@@ -91,6 +92,12 @@ app.use('/movies', moviesRouter);
 
 app.listen(PORT, () => console.log(`Server started in ${PORT}`));
 
-
+async function genPassword(password){
+   // bcrypt.genSalt(NoOfRounds)
+   const salt = await bcrypt.genSalt(10);   // 4 seconds
+   const hashPassword = await bcrypt.hash(password, salt);
+   console.log({ salt, hashPassword });
+}
+genPassword("password@123");
 
 
