@@ -4,6 +4,7 @@ import { getMovieById,
     updateMovieById,
     deleteMovieById,
     getAllMovies } from "../helper.js";
+import { auth } from "../middleware/auth.js";
 const router = express.Router();
 // cursor - pagination -> convert to Array (toArray)
 
@@ -51,7 +52,6 @@ router.delete("/:id", async function (request, response)
   response.send(result); 
    //response.send(movies);
 });  
-
 
 router.put("/:id", async function (request, response)
 { 

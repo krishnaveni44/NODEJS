@@ -4,7 +4,8 @@ import dotenv from "dotenv";
 import express from "express";  // "type": "module",
 import { MongoClient } from "mongodb";
 import { moviesRouter } from "./routes/movies.js";
-import bcrypt from "bcrypt";
+import { usersRouter } from "./routes/users.js";
+
 dotenv.config();
 
 console.log(process.env.MONGO_URL);
@@ -64,9 +65,9 @@ const movies = [
 "trailer":"https://www.youtube.com/embed/NgsQ8mVkN8w"}
 ];
 
-app.use(cors());
+app.use(cors());  // cors -> 3rd party middleware
 // middle ware -> Intercept -> converting body to json
-app.use(express.json());
+app.use(express.json()); // Inbuilt middleware
 
 
 // const MONGO_URL = "mongodb://localhost"; 
@@ -90,14 +91,9 @@ app.get('/', function (request, response)
  
 app.use('/movies', moviesRouter);
 
+app.use('/users', usersRouter);
+
 app.listen(PORT, () => console.log(`Server started in ${PORT}`));
 
-async function genPassword(password){
-   // bcrypt.genSalt(NoOfRounds)
-   const salt = await bcrypt.genSalt(10);   // 4 seconds
-   const hashPassword = await bcrypt.hash(password, salt);
-   console.log({ salt, hashPassword });
-}
-genPassword("password@123");
 
 
