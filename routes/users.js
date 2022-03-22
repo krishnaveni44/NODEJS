@@ -1,5 +1,5 @@
 import express from "express"; 
-import { createUser } from "../helper.js";
+import { createUser,  getUserByName } from "../helper.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 const router = express.Router();
