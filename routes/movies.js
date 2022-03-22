@@ -12,7 +12,7 @@ const router = express.Router();
 // note: replacing app = router
 // router.get("/movies",   note: remove movies from "/movies" 
 
-router.get("/", async function (request, response)
+router.get("/", auth, async function (request, response)
 { 
    // db.movies.find({})
 
