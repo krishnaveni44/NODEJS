@@ -71,7 +71,7 @@ app.use(express.json()); // Inbuilt middleware
 
 
 // const MONGO_URL = "mongodb://localhost"; 
-// const MONGO_URL = "mongodb+srv://moviesdatabase:welcome123@cluster0.aiiaa.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+// const MONGO_URL = "mongodb+srv://moviesdatabase:password@cluster0.aiiaa.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
  // mongodb+srv://moviesdatabase:<password>@cluster0.aiiaa.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
  
  const MONGO_URL = process.env.MONGO_URL;
@@ -92,6 +92,27 @@ app.get('/', function (request, response)
 app.use('/movies', moviesRouter);
 
 app.use('/users', usersRouter);
+
+app.get("/mobiles", async function (request, response)
+{ 
+   // db.movies.find({})
+    const mobiles = await client
+    .db("b30wd")
+    .collection("mobiles")
+    .find({})
+    .toArray();
+   response.send(mobiles);
+}); 
+ 
+
+app.post("/mobiles", async function (request, response) { 
+   const data = request.body;
+   const result = await client 
+   .db("b30wd")
+   .collection("mobiles")
+   .insertMany(data);
+   response.send(result); 
+}); 
 
 app.listen(PORT, () => console.log(`Server started in ${PORT}`));
 
