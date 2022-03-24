@@ -114,7 +114,6 @@ app.get("/mobiles/:id", async function (request, response)
     .findOne({ id: id })
     console.log(mobile);
     response.send(mobile);
-    
 
 });
 
