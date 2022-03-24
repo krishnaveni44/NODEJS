@@ -95,8 +95,7 @@ app.use('/users', usersRouter);
 
 app.get("/mobiles", async function (request, response)
 { 
-   // db.movies.find({})
-    const mobiles = await client
+   const mobiles = await client
     .db("b30wd")
     .collection("mobiles")
     .find({})
