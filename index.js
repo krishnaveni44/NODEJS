@@ -103,6 +103,46 @@ app.get("/mobiles", async function (request, response)
    response.send(mobiles);
 }); 
  
+app.get("/mobiles/:id", async function (request, response)
+{ 
+   console.log(request.params);
+   const { id } = request.params;
+
+   const mobile = await client
+    .db("b30wd")
+    .collection("mobiles")
+    .findOne({ id: id })
+    console.log(mobile);
+    response.send(mobile);
+    
+
+});
+
+app.put("/mobiles/:id", async function (request, response) 
+{  
+    console.log(request.params);  
+    // db.movies.updateOne({id: "102"}, {$set: upadateData}) 
+  const { id } = request.params;   
+  const updateData = request.body;   
+   const result = await client    
+    .db("b30wd")    
+    .collection("mobiles") 
+    .updateOne({ id: id }, { $set: updateData });  
+ response.send(result); 
+}); 
+
+app.delete("/mobiles/:id", async function (request, response) 
+{  
+    console.log(request.params);  
+    // db.movies.updateOne({id: "102"}, {$set: upadateData}) 
+  const { id } = request.params;   
+   
+   const result = await client    
+    .db("b30wd")    
+    .collection("mobiles") 
+    .updateOne({ id: id });  
+ response.send(result); 
+}); 
 
 app.post("/mobiles", async function (request, response) { 
    const data = request.body;
@@ -112,6 +152,8 @@ app.post("/mobiles", async function (request, response) {
    .insertMany(data);
    response.send(result); 
 }); 
+
+
 
 app.listen(PORT, () => console.log(`Server started in ${PORT}`));
 
