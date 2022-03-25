@@ -3,7 +3,7 @@ import { getUserDetailById,
   createUserDetails,
   updateUserDetailById,
   deleteUserDetailById,
-  getAllUserDetails } from "../helper.js";
+  getAllUserDetails } from "../userhelper.js";
 import { auth } from "../middleware/auth.js";
 const router = express.Router();
 // cursor - pagination -> convert to Array (toArray)

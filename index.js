@@ -5,6 +5,7 @@ import express from "express";  // "type": "module",
 import { MongoClient } from "mongodb";
 import { moviesRouter } from "./routes/movies.js";
 import { usersRouter } from "./routes/users.js";
+import { userdetailsRouter } from "./routes/userdetails.js";
 
 dotenv.config();
 
@@ -89,6 +90,17 @@ app.get('/', function (request, response)
     response.send('Hello World ✨🎉✨')
  });  
  
+ app.use('/userdetails', userdetailsRouter);
+
+
+
+
+
+
+
+
+
+
 app.use('/movies', moviesRouter);
 
 app.use('/users', usersRouter);
