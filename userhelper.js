@@ -10,6 +10,16 @@ export async function getUserDetailById(id) {
       .findOne({ _id: ObjectId(id) });
 }
 
+// export async function createUserDetails(data) {
+
+//    try{
+//       const result = await client.db("b30wd").collection("userdetails").insertMany(data);
+//       return result
+//    }
+//    catch(e){
+//       console.log('user error',e)
+//    }
+// }
 
 export async function createUserDetails(data) {
 
