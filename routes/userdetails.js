@@ -62,6 +62,7 @@ router.put("/:id", async function (request, response)
 
 router.post("/", async function (request, response) {
   // db.movies.insertMany(data)
+  console.log('user', request.body)
   const data = request.body;
   console.log(data);
   const result = await createUserDetails(data);

@@ -94,13 +94,6 @@ app.get('/', function (request, response)
 
 
 
-
-
-
-
-
-
-
 app.use('/movies', moviesRouter);
 
 app.use('/users', usersRouter);

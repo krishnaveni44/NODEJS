@@ -12,7 +12,14 @@ export async function getUserDetailById(id) {
 
 
 export async function createUserDetails(data) {
-   return await client.db("b30wd").collection("userdetails").insertMany(data);
+
+   try{
+      const result = await client.db("b30wd").collection("userdetails").insertOne(data);
+      return result
+   }
+   catch(e){
+      console.log('user error',e)
+   }
 }
 
 export async function updateUserDetailById(id, updateData) {
