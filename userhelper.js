@@ -53,3 +53,4 @@ export async function getAllUserDetails() {
       .find({})
       .toArray();
 }
+
