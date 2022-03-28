@@ -3,11 +3,13 @@ import { ObjectId } from "mongodb";
 
 
 export async function getUserDetailById(id) {
-   console.log(id, ObjectId(id));
-   return await client
+   // console.log(id, ObjectId(id));
+   const result = await client
       .db("b30wd")
       .collection("userdetails")
       .findOne({ _id: ObjectId(id) });
+      console.log(result);
+      return result;
 }
 
 // export async function createUserDetails(data) {
